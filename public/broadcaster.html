@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Broadcaster</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #controls {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 500px;
+    }
+    .input-group {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .source-options {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .source-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .source-option label {
+      cursor: pointer;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    #stopButton {
+      background-color: #f44336;
+    }
+    #stopButton:hover {
+      background-color: #d32f2f;
+    }
+    #broadcasterName {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    #sourceInfo {
+      margin-top: 10px;
+      color: #666;
+    }
+    #listenerCount {
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .back-link {
+      margin-top: 30px;
+    }
+    .info-box {
+      background-color: #e7f3fe;
+      border-left: 4px solid #2196F3;
+      padding: 15px;
+      margin: 20px 0;
+      width: 100%;
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Broadcast Your Audio</h1>
+    
+    <div class="info-box">
+      <p><strong>Note:</strong> When selecting "Desktop Audio," you'll need to select which application/tab to capture from. Only Chrome and Edge browsers fully support desktop audio capture.</p>
+    </div>
+    
+    <div id="controls">
+      <div class="input-group">
+        <input type="text" id="broadcasterName" placeholder="Enter your name or channel name">
+      </div>
+      
+      <div class="source-options">
+        <h3>Select Audio Source:</h3>
+        <div class="source-option">
+          <input type="radio" id="micSource" name="audioSource" value="microphone" checked>
+          <label for="micSource">Microphone</label>
+        </div>
+        <div class="source-option">
+          <input type="radio" id="systemSource" name="audioSource" value="system">
+          <label for="systemSource">Desktop Audio (Application/Tab)</label>
+        </div>
+      </div>
+      
+      <button id="startButton">Start Broadcasting</button>
+      <button id="stopButton" disabled>Stop Broadcasting</button>
+    </div>
+    
+    <div id="status">Not broadcasting</div>
+    <div id="sourceInfo"></div>
+    <div id="listenerCount"></div>
+    
+    <a href="/" class="back-link">Back to Home</a>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/broadcaster.js"></script>
+</body>
+</html>

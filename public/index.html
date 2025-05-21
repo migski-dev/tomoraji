@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Audio Streaming</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .button-container {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .listener {
+      background-color: #2196F3;
+    }
+    .listener:hover {
+      background-color: #0b7dda;
+    }
+  </style>
+</head>
+<body>
+  <h1>Live Audio Streaming App</h1>
+  <p>Choose your role:</p>
+  
+  <div class="button-container">
+    <a href="/broadcast" class="button">Become a Broadcaster</a>
+    <a href="/listen" class="button listener">Listen to Broadcasts</a>
+  </div>
+</body>
+</html>

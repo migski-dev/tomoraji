@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Listener</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #broadcastersList {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px 0;
+    }
+    .broadcaster-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      margin-bottom: 10px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+    .tune-button {
+      padding: 8px 15px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .tune-button:hover {
+      background-color: #0b7dda;
+    }
+    .tune-button.listening {
+      background-color: #f44336;
+    }
+    .tune-button.listening:hover {
+      background-color: #d32f2f;
+    }
+    #noBroadcasters {
+      margin: 20px 0;
+      font-style: italic;
+      color: #666;
+    }
+    #controls {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .refresh-button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .refresh-button:hover {
+      background-color: #45a049;
+    }
+    #currentlyListening {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .back-link {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Listen to Live Audio</h1>
+    
+    <div id="controls">
+      <button id="refreshButton" class="refresh-button">Refresh Broadcasters</button>
+    </div>
+    
+    <div id="broadcastersList"></div>
+    <div id="noBroadcasters">No active broadcasters at the moment.</div>
+    
+    <div id="currentlyListening">Not listening to any broadcast</div>
+    
+    <a href="/" class="back-link">Back to Home</a>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/listener.js"></script>
+</body>
+</html>
