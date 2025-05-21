@@ -207,3 +207,21 @@ window.addEventListener('beforeunload', () => {
     }
   }
 });
+
+function verifyAudioDataIntegrity(arrayBuffer) {
+  // Check if the data has a minimum viable size
+  if (arrayBuffer.byteLength < 100) {
+    console.warn("Audio data appears too small, may be corrupted or incomplete");
+    return false;
+  }
+  
+  // For webm, you could verify the EBML header
+  // This is a simplified check - webm files start with 0x1A 0x45 0xDF 0xA3
+  const header = new Uint8Array(arrayBuffer.slice(0, 4));
+  if (!(header[0] === 0x1A && header[1] === 0x45 && header[2] === 0xDF && header[3] === 0xA3)) {
+    console.warn("Audio data doesn't appear to have a valid webm header");
+    return false;
+  }
+  
+  return true;
+}
